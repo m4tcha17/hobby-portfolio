@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
           className="aspect-video w-full bg-muted object-cover"
         />
         <CardHeader>
-          <CardTitle className="text-base">{project.title}</CardTitle>
+          <CardTitle className="text-lg">{project.title}</CardTitle>
           <CardDescription className="text-sm">{project.summary}</CardDescription>
         </CardHeader>
         <CardContent className="mt-auto">

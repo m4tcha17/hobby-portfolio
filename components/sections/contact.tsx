@@ -7,7 +7,7 @@ import { socialIcons } from "@/components/site/social-icons";
 export function Contact() {
   return (
     <section id="contact" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
-      <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">Contact</h2>
+      <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Contact</h2>
       <p className="mt-4 max-w-2xl text-muted-foreground">
         Want to work together or just say hi? Reach out by email or find me on the platforms below.
       </p>

@@ -23,7 +23,7 @@ export function ProjectRow({ project }: { project: Project }) {
         className="aspect-video w-full rounded-md bg-muted object-cover"
       />
       <div className="flex flex-col gap-4">
-        <h2 className="font-heading text-xl font-semibold tracking-tight text-foreground">
+        <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground">
           <Link
             href={`/projects/${project.slug}`}
             data-row-link
@@ -41,7 +41,7 @@ export function ProjectRow({ project }: { project: Project }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", className: "relative z-10" })}
+            className={buttonVariants({ variant: "outline", size: "lg", className: "relative z-10" })}
           >
             <GithubLogo data-icon="inline-start" aria-hidden />
             GitHub

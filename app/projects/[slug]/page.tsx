@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         {project.date && (
           <p className="text-sm font-medium text-primary">{project.date}</p>
         )}
-        <h1 className="mt-2 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <h1 className="mt-2 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {project.title}
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">{project.summary}</p>

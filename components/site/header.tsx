@@ -13,7 +13,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="font-heading text-sm font-semibold tracking-tight text-foreground">
-          {"ang.dev"}
+          {site.siteName}
         </Link>
         <nav aria-label="Main">
           <ul className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-6">

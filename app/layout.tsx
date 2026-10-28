@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
+import { stripHighlights } from "@/lib/highlight";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 
@@ -18,12 +19,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteName = stripHighlights(site.name);
+
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — ${site.role}`,
-    template: `%s | ${site.name}`,
+    default: `${siteName} — ${stripHighlights(site.role)}`,
+    template: `%s | ${siteName}`,
   },
-  description: site.description,
+  description: stripHighlights(site.description),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
