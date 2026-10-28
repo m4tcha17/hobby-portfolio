@@ -1,0 +1,73 @@
+@AGENTS.md
+
+# Project Rules
+
+1. Only use the skills necessary for the task given. Do not invoke unrelated skills.
+2. No version control manipulation at any cost (no `git add`, `commit`, `push`, `branch`, `checkout`, `reset`, `stash`, etc.) except when explicitly asked for by the user.
+3. Strictly follow the system design and scope in this file to avoid scope creep. Anything outside it (new pages, features, libraries) must be proposed to and approved by the user first.
+4. Use React Bits (`@react-bits` registry in `components.json`) for UI animations. Install with `pnpm dlx shadcn@latest add @react-bits/<Component>`.
+5. Ask the user to review developed code after each unit of work. Do not make changes that were not approved by the user beforehand.
+
+# Stack
+
+- Next.js 16 (App Router, `cacheComponents`, `partialPrefetching`) with TypeScript
+- React 19
+- Tailwind CSS v4 + shadcn (`base-mira` style, Base UI primitives); theme tokens live in `app/globals.css`
+- Phosphor icons (`@phosphor-icons/react`)
+- MDX via `@next/mdx` for content
+- pnpm
+
+# Scope
+
+- **Home `/`**: single scrolling page with sections Hero, About, Featured Projects, Contact.
+- **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
+- **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
+- **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
+- **Contact**: mailto + social links only.
+- **Out of scope**: blog, contact form, CMS, backend, metadata fields beyond those listed under Content.
+- Fully static site.
+
+# Roadmap
+
+1. **Base implementation** (phases 1–7): CLAUDE.md, MDX pipeline, layout shell, home sections, project metadata, `/projects` list, `/projects/[slug]` detail page. No animations in this stage.
+2. **Fine-tuning**: animations (React Bits) and layout/design adjusted to the user's exact preferences. Each change is proposed and approved before implementation.
+
+# System Design
+
+## Content
+
+- Each project is one file in `content/projects/<slug>.mdx`. It exports `metadata` (`title`, `summary`, `image`, `tech`, `github`, `featured`, `order`, optional `date`) and its body is the long description.
+- Rendering rule:
+  - Home Featured Projects cards: `summary` only.
+  - `/projects` rows: long description (MDX body) only.
+  - `/projects/[slug]`: both `summary` and long description. `date` is shown only here.
+- `lib/projects.ts` holds the `ProjectMeta` type, `getProjects()` (reads `content/projects/` server-side, sorted by `order`), `getFeaturedProjects()` (featured, first 3) and `getProject(slug)`.
+- `content/site.ts`: typed profile data (name, role, tagline, email, socials, skills).
+- `content/about.mdx`: About bio.
+- Project images live in `public/projects/<slug>.(png|webp)` and render with `next/image`.
+
+## Structure
+
+```
+app/
+  layout.tsx            # metadata, SiteHeader, SiteFooter
+  page.tsx              # Hero, About, FeaturedProjects, Contact
+  projects/page.tsx     # all projects, one ProjectRow each
+  projects/[slug]/page.tsx  # project detail page
+components/
+  ui/                   # shadcn components
+  site/                 # header.tsx, footer.tsx
+  sections/             # hero.tsx, about.tsx, featured-projects.tsx, contact.tsx
+  projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
+  animations/           # React Bits components
+content/                # site.ts, about.mdx, projects/*.mdx
+lib/                    # utils.ts, projects.ts
+mdx-components.tsx
+```
+
+## Conventions
+
+- Server Components by default. Use `"use client"` only for animations and interactive parts.
+- Use only theme tokens (`bg-background`, `text-primary`, etc.). No hardcoded colors.
+- Animations respect `prefers-reduced-motion`.
+- `dynamicParams` is unavailable with `cacheComponents`. Dynamic routes prerender via `generateStaticParams` and call `notFound()` for unknown params.
