@@ -12,11 +12,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="font-heading text-sm font-semibold tracking-tight text-foreground">
+        <Link href="/" className="font-heading text-base font-semibold tracking-tight text-foreground">
           {site.siteName}
         </Link>
         <nav aria-label="Main">
-          <ul className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-6">
+          <ul className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-10">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-foreground">

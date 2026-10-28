@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GithubLogo } from "@phosphor-icons/react/ssr";
+import { GithubLogoIcon } from "@phosphor-icons/react/ssr";
 
 import type { Project } from "@/lib/projects";
 import { buttonVariants } from "@/components/ui/button";
@@ -43,7 +43,7 @@ export function ProjectRow({ project }: { project: Project }) {
             rel="noopener noreferrer"
             className={buttonVariants({ variant: "outline", size: "lg", className: "relative z-10" })}
           >
-            <GithubLogo data-icon="inline-start" aria-hidden />
+            <GithubLogoIcon data-icon="inline-start" aria-hidden />
             GitHub
           </a>
         </div>

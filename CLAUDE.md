@@ -24,7 +24,8 @@
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
-- **Contact**: mailto + social links only.
+- **Contact** (home, `#contact`): "Get in touch" heading, short text, and one button (destination TBD; temporary mailto).
+- **Footer**: copyright, mailto link, and social links. This is the only place email and socials appear.
 - **Out of scope**: blog, contact form, CMS, backend, metadata fields beyond those listed under Content.
 - Fully static site.
 

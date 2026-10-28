@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, GithubLogo } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, GithubLogoIcon } from "@phosphor-icons/react/ssr";
 
 import { getProject, getProjects } from "@/lib/projects";
 import { buttonVariants } from "@/components/ui/button";
 import { TechStack } from "@/components/projects/tech-stack";
+
+export const instant = false;
 
 // `dynamicParams` is unavailable with cacheComponents; unknown slugs hit notFound().
 export async function generateStaticParams() {
@@ -39,7 +41,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         href="/projects"
         className={buttonVariants({ variant: "ghost", size: "sm", className: "-ml-2" })}
       >
-        <ArrowLeft data-icon="inline-start" aria-hidden />
+        <ArrowLeftIcon data-icon="inline-start" aria-hidden />
         All projects
       </Link>
 
@@ -77,7 +79,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           rel="noopener noreferrer"
           className={buttonVariants({ size: "lg" })}
         >
-          <GithubLogo data-icon="inline-start" aria-hidden />
+          <GithubLogoIcon data-icon="inline-start" aria-hidden />
           View on GitHub
         </a>
       </div>

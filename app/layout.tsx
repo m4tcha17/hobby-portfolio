@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteName = stripHighlights(site.name);
+const siteName = stripHighlights(site.siteName);
 
 export const metadata: Metadata = {
   title: {
-    default: `${siteName} — ${stripHighlights(site.role)}`,
+    default: `${siteName} · ${stripHighlights(site.role)}`,
     template: `%s | ${siteName}`,
   },
   description: stripHighlights(site.description),

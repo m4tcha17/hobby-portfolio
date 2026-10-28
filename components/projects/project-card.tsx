@@ -12,7 +12,7 @@ export function ProjectCard({ project }: { project: Project }) {
       href={`/projects/${project.slug}`}
       className="group block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <Card className="h-full transition-shadow group-hover:ring-foreground/25">
+      <Card className="bg-background h-full transition-shadow group-hover:ring-foreground/25">
         <Image
           src={project.image}
           alt={`${project.title} screenshot`}

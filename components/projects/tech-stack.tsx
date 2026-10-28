@@ -5,7 +5,7 @@ export function TechStack({ tech }: { tech: string[] }) {
     <ul aria-label="Tech stack" className="flex flex-wrap gap-1.5">
       {tech.map((item) => (
         <li key={item}>
-          <Badge variant="secondary">{item}</Badge>
+          <Badge variant="secondary" className="h-6 px-2.5 text-xs">{item}</Badge>
         </li>
       ))}
     </ul>

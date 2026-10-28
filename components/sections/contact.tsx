@@ -1,40 +1,30 @@
-import { EnvelopeSimple } from "@phosphor-icons/react/ssr";
+import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 
 import { site } from "@/content/site";
+import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { socialIcons } from "@/components/site/social-icons";
 
+// Contact buttons stay one step smaller than the shared `lg` size.
+const contactButtonSize =
+  "h-10 gap-1.5 px-4 text-sm has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 [&_svg:not([class*='size-'])]:size-4";
+
+// TODO: destination still undecided; mailto is a temporary placeholder.
+const getInTouchHref = `mailto:${site.email}`;
+
+/** "Get in touch" call to action. Email and social links live in SiteFooter. */
 export function Contact() {
   return (
     <section id="contact" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
-      <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Contact</h2>
+      <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Get in touch</h2>
       <p className="mt-4 max-w-2xl text-muted-foreground">
-        Want to work together or just say hi? Reach out by email or find me on the platforms below.
+        Want to work together? I&apos;d love to hear from you.
       </p>
-      <ul className="mt-8 flex flex-wrap gap-3">
-        <li>
-          <a href={`mailto:${site.email}`} className={buttonVariants({ size: "lg" })}>
-            <EnvelopeSimple data-icon="inline-start" aria-hidden />
-            {site.email}
-          </a>
-        </li>
-        {site.socials.map(({ platform, label, href }) => {
-          const Icon = socialIcons[platform];
-          return (
-            <li key={platform}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={buttonVariants({ size: "lg", variant: "outline" })}
-              >
-                <Icon data-icon="inline-start" aria-hidden />
-                {label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="mt-8">
+        <a href={getInTouchHref} className={cn(buttonVariants({ size: "lg" }), contactButtonSize)}>
+          Get in touch
+          <ArrowRightIcon data-icon="inline-end" aria-hidden />
+        </a>
+      </div>
     </section>
   );
 }

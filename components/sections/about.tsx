@@ -10,7 +10,7 @@ export function About() {
         <Highlight text={site.name} />
       </h1>
       <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground mt-8 sm:text-4xl">About</h2>
-      <div className="mt-2 max-w-2xl">
+      <div className="mt-2 max-w-2xl text-lg">
         <AboutContent />
       </div>
       <h3 className="mt-10 text-sm font-medium text-foreground">Skills</h3>
