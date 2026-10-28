@@ -7,9 +7,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        // Primary border with a light tint and primary text; hover/focus deepens the fill, still short of the solid border.
+        // `!`: the base `border-transparent` otherwise wins over a variant border color.
+        default:
+          "border-primary! bg-background text-primary hover:bg-primary/80 hover:text-primary-foreground focus-visible:bg-primary/80 focus-visible:text-primary-foreground",
         outline:
           "border-border hover:bg-input/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:bg-input/30",
+        // Outline look without a hover background: hover/focus turns the text primary; icons animate per use site.
+        quiet: "border-border hover:text-primary focus-visible:text-primary aria-expanded:text-primary",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:

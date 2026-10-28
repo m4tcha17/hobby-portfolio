@@ -19,7 +19,9 @@
 
 # Scope
 
-- **Home `/`**: single scrolling page with sections Hero, Featured Projects, Contact.
+- **Home `/`**: single scrolling page with sections Hero, Skills Marquee, Featured Projects, Contact.
+- **First screen**: Hero and Skills Marquee together fill the viewport below the header; Featured Projects starts below the fold.
+- **Skills Marquee** (home, between Hero and Featured Projects): thin strip of `site.skills` scrolling horizontally (React Bits `LogoLoop`), static under `prefers-reduced-motion`.
 - **`/about`**: name (the page's h1), About bio from `content/about.mdx`, and skills chips.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
@@ -53,16 +55,16 @@
 ```
 app/
   layout.tsx            # metadata, SiteHeader, SiteFooter
-  page.tsx              # Hero, FeaturedProjects, Contact
+  page.tsx              # Hero, SkillsMarquee, FeaturedProjects, Contact
   about/page.tsx        # About section
   projects/page.tsx     # all projects, one ProjectRow each
   projects/[slug]/page.tsx  # project detail page
 components/
   ui/                   # shadcn components
-  site/                 # header.tsx, footer.tsx
-  sections/             # hero.tsx, about.tsx, featured-projects.tsx, contact.tsx
+  site/                 # header.tsx, footer.tsx, section-divider.tsx
+  sections/             # hero.tsx, about.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
   projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
-  animations/           # React Bits components
+  animations/           # React Bits components (logo-loop.tsx)
 content/                # site.ts, about.mdx, projects/*.mdx
 lib/                    # utils.ts, projects.ts
 mdx-components.tsx
