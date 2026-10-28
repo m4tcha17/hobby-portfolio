@@ -61,8 +61,8 @@ app/
   projects/[slug]/page.tsx  # project detail page
 components/
   ui/                   # shadcn components
-  site/                 # header.tsx, footer.tsx, section-divider.tsx
-  sections/             # hero.tsx, about.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
+  site/                 # header.tsx, footer.tsx, section-divider.tsx, home-link.tsx
+  sections/             # hero.tsx, hero-replay.tsx, about.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
   projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
   animations/           # React Bits components (logo-loop.tsx)
 content/                # site.ts, about.mdx, projects/*.mdx

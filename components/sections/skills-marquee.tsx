@@ -7,7 +7,7 @@ export function SkillsMarquee() {
     node: (
       <span className="flex items-center gap-8 font-heading text-lg font-medium whitespace-nowrap text-muted-foreground">
         {skill}
-        <span aria-hidden className="text-primary">✦</span>
+        <span aria-hidden className="text-primary">•</span>
       </span>
     ),
     title: skill,

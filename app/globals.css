@@ -78,7 +78,7 @@
   --radius: 0.625rem;
   --scrim: oklch(0.141 0.005 285.823);
   --scrim-foreground: oklch(0.985 0 0);
-  --primary-on-scrim: oklch(0.78 0.09 152.41);
+  --primary-on-scrim: oklch(0.86 0.09 152.41);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.5049 0.0606 152.41);

@@ -9,7 +9,14 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-muted-foreground sm:flex-row sm:px-6">
-        <p>© {stripHighlights(site.name)}. All rights reserved.</p>
+        <div className="flex flex-col gap-1 text-center sm:text-left">
+          <p>
+            <span className="font-heading font-medium text-foreground">{stripHighlights(site.siteName)}</span>
+            {" · "}
+            {stripHighlights(site.role)}
+          </p>
+          <p>© {stripHighlights(site.name)}. All rights reserved.</p>
+        </div>
         <ul className="flex flex-wrap items-center justify-center gap-4">
           <li>
             <a

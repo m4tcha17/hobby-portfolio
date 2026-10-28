@@ -47,8 +47,10 @@ export function ProjectCard({
           sizes={large ? "(min-width: 640px) 66vw, 100vw" : "(min-width: 640px) 33vw, 100vw"}
           className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
+        {/* Progressive blur: softens image detail behind the text, fading out upward, so any screenshot stays readable. */}
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 backdrop-blur-md mask-t-from-40%" />
         {/* Gradient scrim: fades the image under the text instead of a boxed band. */}
-        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-scrim/80 via-scrim/40 to-transparent px-6 pt-16 pb-5 text-scrim-foreground">
+        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-scrim/70 via-scrim/70 via-60% to-transparent px-6 pt-16 pb-5 text-scrim-foreground">
           <h3
             className={cn(
               "flex items-center gap-1.5 font-heading font-medium transition-colors duration-300 group-hover:text-primary-on-scrim group-focus-visible:text-primary-on-scrim",
