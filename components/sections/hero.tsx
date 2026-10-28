@@ -12,7 +12,7 @@ export function Hero() {
       <h1 className="mt-3 max-w-lg font-heading text-6xl font-semibold tracking-tight text-foreground sm:text-6xl">
         <Highlight text={site.tagline} />
       </h1>
-      <p className="mt-6 max-w-md text-lg text-muted-foreground">
+      <p className="mt-6 max-w-xl text-lg text-muted-foreground">
         <Highlight text={site.description} />
       </p>
       <div className="mt-10 flex flex-wrap gap-3">

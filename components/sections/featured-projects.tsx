@@ -14,11 +14,11 @@ export async function FeaturedProjects() {
       <h2 className="text-center font-heading text-3xl font-semibold tracking-tight text-primary sm:text-4xl">Ideas made real.</h2>
       {/* Bento: first project is the big left tile, the other two stack on the right. */}
       {/* 16:7 grid makes every tile roughly 3:2 landscape. */}
-      <ul className="mt-8 grid gap-4 sm:aspect-[16/7] sm:grid-cols-3 sm:grid-rows-2">
+      <ul className="mt-8 grid gap-4 sm:aspect-16/7 sm:grid-cols-3 sm:grid-rows-2">
         {projects.map((project, index) => (
           <li
             key={project.slug}
-            className={cn("aspect-[3/2] sm:aspect-auto", index === 0 && "sm:col-span-2 sm:row-span-2")}
+            className={cn("aspect-3/2 sm:aspect-auto", index === 0 && "sm:col-span-2 sm:row-span-2")}
           >
             <ProjectCard project={project} index={index} large={index === 0} />
           </li>
