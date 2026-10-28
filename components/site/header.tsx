@@ -3,7 +3,7 @@ import Link from "next/link";
 import { site } from "@/content/site";
 
 const navItems = [
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/#projects" },
   { label: "Contact", href: "/#contact" },
 ];

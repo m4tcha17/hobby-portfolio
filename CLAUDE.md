@@ -19,7 +19,8 @@
 
 # Scope
 
-- **Home `/`**: single scrolling page with sections Hero, About, Featured Projects, Contact.
+- **Home `/`**: single scrolling page with sections Hero, Featured Projects, Contact.
+- **`/about`**: name (the page's h1), About bio from `content/about.mdx`, and skills chips.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
@@ -51,7 +52,8 @@
 ```
 app/
   layout.tsx            # metadata, SiteHeader, SiteFooter
-  page.tsx              # Hero, About, FeaturedProjects, Contact
+  page.tsx              # Hero, FeaturedProjects, Contact
+  about/page.tsx        # About section
   projects/page.tsx     # all projects, one ProjectRow each
   projects/[slug]/page.tsx  # project detail page
 components/

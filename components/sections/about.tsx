@@ -5,7 +5,7 @@ import { TechStack } from "@/components/projects/tech-stack";
 
 export function About() {
   return (
-    <section id="about" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
+    <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
       <h1 className="mt-3 mb-3 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
         <Highlight text={site.name} />
       </h1>
