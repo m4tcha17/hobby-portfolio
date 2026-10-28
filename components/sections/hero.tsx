@@ -9,7 +9,7 @@ export function Hero() {
     <section id="hero" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-24 sm:px-6 sm:py-32">
       <p className="text-sm font-medium text-primary">{site.role}</p>
       <h1 className="mt-3 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-        {site.name}
+        {site.tagline}
       </h1>
       <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{site.tagline}</p>
       <div className="mt-10 flex flex-wrap gap-3">
