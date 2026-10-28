@@ -20,7 +20,7 @@ export type SiteConfig = {
 
 export const site: SiteConfig = {
   siteName: "ang.dev",
-  name: "James Benedict S. Ang",
+  name: "James Ang",
   role: "Software Developer",
   tagline: "Engineering digital [experiences] from [screen] to [foundation].",
   description: "I build to solve problems I and many others face daily. I’m all about learning and understanding software from the bottom-up.",
