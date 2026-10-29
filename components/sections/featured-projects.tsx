@@ -13,7 +13,7 @@ export async function FeaturedProjects() {
   return (
     <section id="projects" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
       <AnimatedContent distance={40} once={false}>
-        <h2 className="text-center font-heading text-3xl font-semibold tracking-tight text-primary sm:text-4xl">Ideas made real.</h2>
+        <h2 className="cursor-target mx-auto w-fit text-center font-heading text-3xl font-semibold tracking-tight text-primary sm:text-4xl">Ideas made real.</h2>
       </AnimatedContent>
       {/* Bento: first project is the big left tile, the other two stack on the right. */}
       {/* 16:7 grid makes every tile roughly 3:2 landscape. */}

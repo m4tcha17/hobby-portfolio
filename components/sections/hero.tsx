@@ -40,12 +40,12 @@ export function Hero() {
             splitType="chars"
             delay={30}
             textAlign="left"
-            className="mt-3 max-w-lg font-heading text-6xl font-semibold tracking-tight text-foreground sm:text-6xl"
+            className="cursor-target mt-3 max-w-lg font-heading text-6xl font-semibold tracking-tight text-foreground sm:text-6xl"
           >
             <Highlight text={site.tagline} />
           </SplitText>
         </HeroReplay>
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+        <p className="cursor-target mt-6 w-fit max-w-xl text-lg text-muted-foreground">
           <Highlight text={site.description} />
         </p>
         <div className="mt-10 flex flex-wrap gap-3">

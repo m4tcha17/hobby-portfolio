@@ -18,12 +18,11 @@ export function Contact() {
   return (
     <section id="contact" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
       <AnimatedContent distance={40} once={false}>
-        <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Get in touch</h2>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
+        <h2 className="cursor-target w-fit font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Get in touch</h2>
+        <p className="cursor-target mt-4 w-fit max-w-2xl text-muted-foreground">
           Want to work together? I&apos;d love to hear from you.
         </p>
         <div className="mt-8">
-          {/* padding 0: the pull only engages while the cursor is on the button itself. */}
           <Magnet padding={0} magnetStrength={4} maxOffset={12}>
             <a href={getInTouchHref} className={cn(buttonVariants({ size: "lg" }), contactButtonSize)}>
               Get in touch

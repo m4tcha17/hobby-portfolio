@@ -22,7 +22,7 @@ export function HeroTerminal() {
   const [commandTyped, setCommandTyped] = useState(false);
 
   return (
-    <div className="w-full max-w-xs overflow-hidden rounded-xl border border-border bg-scrim font-mono text-sm text-scrim-foreground shadow-lg">
+    <div className="cursor-target w-full max-w-xs overflow-hidden rounded-xl border border-border bg-scrim font-mono text-sm text-scrim-foreground shadow-lg">
       <div className="flex items-center gap-2 border-b border-scrim-foreground/10 px-4 py-2.5">
         <span className="size-3 rounded-full bg-scrim-foreground/20" aria-hidden />
         <span className="size-3 rounded-full bg-scrim-foreground/20" aria-hidden />
@@ -39,7 +39,7 @@ export function HeroTerminal() {
             showCursor={!commandTyped}
             cursorStyle="block"
             mistakes={0.4}
-            typingSpeed={80}
+            typingSpeed={40}
             onTypingComplete={() => setCommandTyped(true)}
             className="text-sm font-medium text-scrim-foreground/80"
           />
@@ -52,7 +52,7 @@ export function HeroTerminal() {
               loop={false}
               cursorStyle="block"
               mistakes={0.4}
-              typingSpeed={80}
+              typingSpeed={40}
               className="text-sm font-medium text-scrim-foreground/80"
             />
           </p>

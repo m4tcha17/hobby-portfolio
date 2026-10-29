@@ -22,7 +22,7 @@
 - **Home `/`**: single scrolling page with sections Hero, Skills Marquee, Featured Projects, Contact.
 - **First screen**: Hero and Skills Marquee together fill the viewport below the header; Featured Projects starts below the fold.
 - **Skills Marquee** (home, between Hero and Featured Projects): thin strip of `site.skills` scrolling horizontally (React Bits `LogoLoop`), static under `prefers-reduced-motion`.
-- **`/about`**: name (the page's h1), About bio from `content/about.mdx`, and skills chips.
+- **`/about`**: profile photo (`public/profile.jpg`), name (the page's h1), About bio from `content/about.mdx`, and skills chips.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.

@@ -14,7 +14,7 @@ export function ProjectRow({ project }: { project: Project }) {
   const { Description } = project;
 
   return (
-    <article className="group relative grid gap-6 rounded-lg p-4 transition-colors hover:bg-muted/50 has-[a[data-row-link]:focus-visible]:ring-2 has-[a[data-row-link]:focus-visible]:ring-ring sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+    <article className="cursor-target group relative grid gap-6 rounded-lg p-4 transition-colors hover:bg-muted/50 has-[a[data-row-link]:focus-visible]:ring-2 has-[a[data-row-link]:focus-visible]:ring-ring sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
       <Image
         src={project.image}
         alt={`${project.title} screenshot`}

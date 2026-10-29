@@ -53,6 +53,7 @@ export function SiteFooter() {
             <a
               href="#"
               className={cn(
+                "cursor-target",
                 buttonVariants({ variant: "ghost", size: "sm" }),
                 "hover:bg-transparent hover:text-primary focus-visible:text-primary dark:hover:bg-transparent",
               )}
