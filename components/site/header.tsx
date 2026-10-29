@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { site } from "@/content/site";
 import { HomeLink } from "@/components/site/home-link";
+import { NavLink } from "@/components/site/nav-link";
 
 const navItems = [
   { label: "About", href: "/about" },
@@ -20,14 +19,14 @@ export function SiteHeader() {
           <ul className="flex items-center gap-4 text-sm text-muted-foreground sm:gap-10">
             {navItems.map((item) => (
               <li key={item.href}>
-                {/* Hover/focus: text turns primary and an underline grows left to right (scale-x from origin-left). */}
-                <Link
+                {/* Hover/focus: text turns primary and an underline grows left to right (scale-x from origin-left). NavLink keeps both on the current page. */}
+                <NavLink
                   href={item.href}
                   data-cursor-padding="8"
                   className="cursor-target relative inline-block transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100 motion-reduce:after:transition-none"
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

@@ -26,6 +26,7 @@
   - Intro: name (the page's h1), role · location line, ornament divider, profile photo (`public/profile.jpg`) beside the About bio from `content/about.mdx` (drop cap), then an epigraph quote.
   - Skills: `site.skillGroups` in three categories (Languages, Libraries & Frameworks, Backend & Infrastructure), chips per group.
   - What I'm doing now: `site.now` list of label + text items.
+  - Lattice Loader (React Bits `LatticeLoader`) left-aligned under the bio: "Thinking" briefly, then "Thought for Ns", as if the bio was just reasoned out.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
@@ -64,10 +65,10 @@ app/
   projects/[slug]/page.tsx  # project detail page
 components/
   ui/                   # shadcn components
-  site/                 # header.tsx, footer.tsx, section-divider.tsx, ornament-divider.tsx, home-link.tsx
-  sections/             # hero.tsx, hero-replay.tsx, hero-terminal.tsx, about.tsx, about-skills.tsx, about-now.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
+  site/                 # header.tsx, nav-link.tsx, footer.tsx, section-divider.tsx, ornament-divider.tsx, home-link.tsx
+  sections/             # hero.tsx, hero-replay.tsx, hero-terminal.tsx, about.tsx, about-thought.tsx, about-skills.tsx, about-now.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
   projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
-  animations/           # React Bits components (logo-loop.tsx)
+  animations/           # React Bits components (logo-loop.tsx, lattice-loader.tsx)
 content/                # site.ts, about.mdx, projects/*.mdx
 lib/                    # utils.ts, projects.ts
 mdx-components.tsx

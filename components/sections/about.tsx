@@ -6,6 +6,7 @@ import { Highlight } from "@/components/site/highlight";
 import { OrnamentDivider } from "@/components/site/ornament-divider";
 import AnimatedContent from "@/components/animations/animated-content";
 import SplitText from "@/components/animations/split-text";
+import { AboutThought } from "@/components/sections/about-thought";
 
 /** About intro: name, role and location, ornament break, photo beside the bio, and an epigraph quote. */
 export function About() {
@@ -50,6 +51,9 @@ export function About() {
             <p className="cursor-target mt-3 max-w-prose text-lg leading-7 text-muted-foreground">
               {site.bio}
             </p>
+            <div className="mt-1">
+              <AboutThought />
+            </div>
           </AnimatedContent>
 
           <AnimatedContent distance={40} trigger="mount" delay={0.36}>
