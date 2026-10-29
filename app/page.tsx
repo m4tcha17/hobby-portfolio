@@ -7,8 +7,8 @@ import { SectionDivider } from "@/components/site/section-divider";
 export default function Home() {
   return (
     <>
-      {/* First screen: hero and marquee centered together as one group, filling the viewport below the sticky header (h-14 + 1px border). */}
-      <div className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col justify-center gap-24 py-8">
+      {/* First screen: hero, terminal and marquee centered vertically as one group, filling the viewport below the sticky header (h-14 + 1px border). */}
+      <div className="flex min-h-[calc(100svh-3.5rem-1px)] flex-col justify-center gap-16 py-8">
         <Hero />
         <SkillsMarquee />
       </div>

@@ -7,7 +7,6 @@ export type SocialLink = {
 };
 
 export type SiteConfig = {
-  /** Short brand name shown in the header, e.g. "ang.dev". */
   siteName: string;
   name: string;
   role: string;

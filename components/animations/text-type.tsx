@@ -37,6 +37,8 @@ interface TextTypeProps {
   textColors?: string[];
   variableSpeed?: { min: number; max: number };
   onSentenceComplete?: (sentence: string, index: number) => void;
+  /** Fires once the last sentence is fully typed and `loop` is false. */
+  onTypingComplete?: () => void;
   startOnVisible?: boolean;
   reverseMode?: boolean;
 }
@@ -151,6 +153,7 @@ const TextType = ({
   textColors = [],
   variableSpeed,
   onSentenceComplete,
+  onTypingComplete,
   startOnVisible = false,
   reverseMode = false,
   ...props
@@ -172,6 +175,7 @@ const TextType = ({
   const placeCursor = useRef<(instant: boolean) => void>(() => {});
   const lastTypo = useRef(-1);
   const onSentenceCompleteRef = useRef(onSentenceComplete);
+  const onTypingCompleteRef = useRef(onTypingComplete);
 
   const textKey = Array.isArray(text) ? text.join('\u0000') : String(text ?? '');
   const textArray = useMemo(() => textKey.split('\u0000'), [textKey]);
@@ -187,6 +191,10 @@ const TextType = ({
   useEffect(() => {
     onSentenceCompleteRef.current = onSentenceComplete;
   }, [onSentenceComplete]);
+
+  useEffect(() => {
+    onTypingCompleteRef.current = onTypingComplete;
+  }, [onTypingComplete]);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -318,6 +326,8 @@ const TextType = ({
         }
       } else if (loop || index < textArray.length - 1) {
         wait(pauseDuration, () => setIsDeleting(true));
+      } else {
+        onTypingCompleteRef.current?.();
       }
     } else if (shown > 0) {
       if (reduceMotion) {

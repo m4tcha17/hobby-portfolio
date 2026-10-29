@@ -23,7 +23,7 @@ export function SiteHeader() {
                 {/* Hover/focus: text turns primary and an underline grows left to right (scale-x from origin-left). */}
                 <Link
                   href={item.href}
-                  className="relative inline-block transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100 motion-reduce:after:transition-none"
+                  className="relative inline-block transition-colors duration-300 after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 hover:text-primary hover:after:scale-x-100 focus-visible:text-primary focus-visible:after:scale-x-100 motion-reduce:after:transition-none"
                 >
                   {item.label}
                 </Link>

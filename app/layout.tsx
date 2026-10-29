@@ -31,9 +31,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
+    // Smooth scrolling for in-page anchors (#projects, #contact, back to top), off under prefers-reduced-motion.
+    // data-scroll-behavior lets Next.js disable it during route navigations so page changes still jump to the top.
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", publicSans.variable)}
+      data-scroll-behavior="smooth"
+      className={cn("h-full", "antialiased", "motion-safe:scroll-smooth", geistSans.variable, geistMono.variable, "font-sans", publicSans.variable)}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <SiteHeader />
