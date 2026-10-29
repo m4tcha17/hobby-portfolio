@@ -44,10 +44,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex flex-1 flex-col">{children}</main>
         <SiteFooter />
         {/* Reticle locks onto links, buttons and `.cursor-target` elements. Nav and footer links are excluded
-            unless marked `.cursor-target` (nav items, back to top), and so are row title links, so `/projects` rows (marked `.cursor-target`) are framed whole. Fine pointers only. */}
+            unless marked `.cursor-target` (nav items, back to top), and so are links inside a `.cursor-target`, so `/projects` rows are framed whole,
+            GitHub button included. Fine pointers only. */}
         {/* Exclusion blend inverts against the page, so the light background token reads dark on light content. */}
         <TargetCursor
-          targetSelector="a:not([data-row-link], nav a, footer a), button:not(footer button), .cursor-target"
+          targetSelector="a:not(.cursor-target a, nav a, footer a), button:not(footer button), .cursor-target"
           cursorColor="var(--background)"
           blendMode="exclusion"
           size={24}

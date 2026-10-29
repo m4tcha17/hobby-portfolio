@@ -11,7 +11,7 @@ import { AboutThought } from "@/components/sections/about-thought";
 /** About intro: name, role and location, ornament break, photo beside the bio, and an epigraph quote. */
 export function About() {
   return (
-    <section className="mx-auto w-full max-w-4xl px-4 pt-16 pb-12 sm:px-6 sm:pt-20">
+    <section className="mx-auto w-full max-w-5xl px-4 pt-16 pb-12 sm:px-6 sm:pt-20">
       <header>
         <SplitText
           tag="h1"
@@ -34,21 +34,21 @@ export function About() {
       <OrnamentDivider className="my-10 sm:my-12" />
 
       <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-10">
-        <AnimatedContent distance={40} trigger="mount" delay={0.12} className="w-full max-w-80 shrink-0 sm:w-72">
+        <AnimatedContent distance={40} trigger="mount" delay={0.12} className="w-full max-w-96 shrink-0 sm:w-72 lg:w-96">
           <Image
             src="/profile.jpg"
             alt={`Portrait of ${site.name}`}
             width={900}
             height={1200}
             priority
-            sizes="(min-width: 640px) 288px, 320px"
-            className="aspect-3/4 w-full object-cover cursor-target"
+            sizes="(min-width: 1024px) 384px, (min-width: 640px) 288px, 384px"
+            className="aspect-3/4 w-full object-cover cursor-target shadow-xl shadow-foreground/15 ring-1 ring-border"
           />
         </AnimatedContent>
         <div className="w-full min-w-0 flex-1">
           <AnimatedContent distance={40} trigger="mount" delay={0.24}>
             <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{site.bioTitle}</h2>
-            <p className="cursor-target mt-3 max-w-prose text-lg leading-7 text-muted-foreground">
+            <p className="cursor-target mt-3 max-w-prose text-lg leading-7 text-muted-foreground text-justify">
               {site.bio}
             </p>
             <div className="mt-1">

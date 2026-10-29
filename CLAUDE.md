@@ -29,7 +29,7 @@
   - Lattice Loader (React Bits `LatticeLoader`) left-aligned under the bio: "Thinking" briefly, then "Thought for Ns", as if the bio was just reasoned out.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
-- **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
+- **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`. Below the image, the long description sits beside a narrower side column (2:1) with the tech stack, "My contribution" (if set) and the GitHub button.
 - **Contact** (home, `#contact`): "Get in touch" heading, short text, and one button (destination TBD; temporary mailto).
 - **Footer**: copyright, mailto link, and social links. This is the only place email and socials appear.
 - **Out of scope**: blog, contact form, CMS, backend, metadata fields beyond those listed under Content.
@@ -44,11 +44,11 @@
 
 ## Content
 
-- Each project is one file in `content/projects/<slug>.mdx`. It exports `metadata` (`title`, `summary`, `image`, `tech`, `github`, `featured`, `order`, optional `date`) and its body is the long description.
+- Each project is one file in `content/projects/<slug>.mdx`. It exports `metadata` (`title`, `summary`, `image`, `tech`, `github`, `featured`, `order`, optional `date`, optional `contribution`) and its body is the long description.
 - Rendering rule:
   - Home Featured Projects cards: `summary` only.
   - `/projects` rows: long description (MDX body) only.
-  - `/projects/[slug]`: both `summary` and long description. `date` is shown only here.
+  - `/projects/[slug]`: both `summary` and long description. `date` and `contribution` (bullet list) are shown only here.
 - `lib/projects.ts` holds the `ProjectMeta` type, `getProjects()` (reads `content/projects/` server-side, sorted by `order`), `getFeaturedProjects()` (featured, first 3) and `getProject(slug)`.
 - `content/site.ts`: typed profile data (name, role, location, tagline, email, socials, skills for the home marquee, and for `/about`: quote, skillGroups, now).
 - `content/about.mdx`: About bio.

@@ -6,9 +6,15 @@ import { ArrowLeftIcon, GithubLogoIcon } from "@phosphor-icons/react/ssr";
 
 import { getProject, getProjects } from "@/lib/projects";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { TechStack } from "@/components/projects/tech-stack";
+import AnimatedContent from "@/components/animations/animated-content";
+import SplitText from "@/components/animations/split-text";
 
 export const instant = false;
+
+/** Side column headings, styled like the /about role · location line. */
+const sideHeading = "text-xs font-medium tracking-[0.2em] text-muted-foreground uppercase";
 
 // `dynamicParams` is unavailable with cacheComponents; unknown slugs hit notFound().
 export async function generateStaticParams() {
@@ -36,52 +42,98 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   const { Description } = project;
 
   return (
-    <article className="mx-auto w-full max-w-3xl px-4 py-16 sm:px-6">
-      <Link
-        href="/projects"
-        className={buttonVariants({ variant: "ghost", size: "sm", className: "-ml-2" })}
-      >
-        <ArrowLeftIcon data-icon="inline-start" aria-hidden />
-        All projects
-      </Link>
+    <article className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
+      {/* Back link, date and title animate on load. Everything after fades up on scroll, staggered after the title on first view;
+          each block replays on every scroll down and resets only once off-screen, so scrolling up never hides it. */}
+      <AnimatedContent distance={24} trigger="mount">
+        <Link
+          href="/projects"
+          className={cn(
+            buttonVariants({ variant: "ghost", size: "sm" }),
+            "-ml-2 hover:bg-transparent hover:text-primary focus-visible:text-primary dark:hover:bg-transparent",
+          )}
+        >
+          <ArrowLeftIcon
+            data-icon="inline-start"
+            aria-hidden
+            className="transition-transform duration-300 group-hover/button:-translate-x-0.5 group-focus-visible/button:-translate-x-0.5 motion-reduce:transition-none motion-reduce:translate-x-0!"
+          />
+          All projects
+        </Link>
+      </AnimatedContent>
 
       <header className="mt-8">
         {project.date && (
-          <p className="text-sm font-medium text-primary">{project.date}</p>
+          <AnimatedContent distance={24} trigger="mount">
+            <p className="text-sm font-medium text-primary">{project.date}</p>
+          </AnimatedContent>
         )}
-        <h1 className="mt-2 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-          {project.title}
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">{project.summary}</p>
+        <SplitText
+          tag="h1"
+          text={project.title}
+          trigger="load"
+          splitType="chars"
+          delay={30}
+          textAlign="left"
+          className="cursor-target mt-2 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl"
+        />
+        <AnimatedContent distance={24} once={false} resetOffscreen delay={0.12}>
+          <p className="mt-4 text-lg text-muted-foreground">{project.summary}</p>
+        </AnimatedContent>
       </header>
 
-      <Image
-        src={project.image}
-        alt={`${project.title} screenshot`}
-        width={1280}
-        height={720}
-        preload
-        className="mt-10 aspect-video w-full rounded-lg bg-muted object-cover"
-      />
+      <AnimatedContent distance={24} once={false} resetOffscreen delay={0.24}>
+        <Image
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          width={1280}
+          height={720}
+          preload
+          className="mt-10 aspect-video w-full rounded-lg bg-muted object-cover"
+        />
+      </AnimatedContent>
 
-      <div className="mt-10">
-        <TechStack tech={project.tech} />
-      </div>
+      {/* Description beside a narrower side column (2:1); stacked on phones, description first. */}
+      <div className="mt-10 grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <AnimatedContent distance={24} once={false} resetOffscreen>
+          <Description />
+        </AnimatedContent>
 
-      <div className="mt-6">
-        <Description />
-      </div>
+        <aside className="flex flex-col gap-8">
+          <AnimatedContent distance={24} once={false} resetOffscreen>
+            <h2 className={sideHeading}>Tech stack</h2>
+            <div className="mt-3">
+              <TechStack tech={project.tech} />
+            </div>
+          </AnimatedContent>
 
-      <div className="mt-10">
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={buttonVariants({ size: "lg" })}
-        >
-          <GithubLogoIcon data-icon="inline-start" aria-hidden />
-          View on GitHub
-        </a>
+          {project.contribution && project.contribution.length > 0 && (
+            <AnimatedContent distance={24} once={false} resetOffscreen>
+              <h2 className={sideHeading}>My contribution</h2>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground marker:text-primary">
+                {project.contribution.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </AnimatedContent>
+          )}
+
+          <AnimatedContent distance={24} once={false} resetOffscreen>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ size: "lg" })}
+            >
+              <GithubLogoIcon
+                data-icon="inline-start"
+                aria-hidden
+                className="transition-transform duration-300 group-hover/button:-translate-y-0.5 group-focus-visible/button:-translate-y-0.5 motion-reduce:transition-none motion-reduce:translate-y-0!"
+              />
+              View on GitHub
+            </a>
+          </AnimatedContent>
+        </aside>
       </div>
     </article>
   );

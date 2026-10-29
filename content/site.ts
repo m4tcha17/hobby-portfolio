@@ -51,7 +51,7 @@ export const site: SiteConfig = {
   tagline: "Engineering digital [experiences] from [screen] to [foundation.]",
   description: "I build to solve problems I and many others face daily. I’m all about learning and understanding software from the bottom-up.",
   bioTitle: "If it runs, I want to know why.",
-  bio: "Hello, my name is James and I am an aspiring Sofware Developer and aiming to be a Full-Stack Developer.",
+  bio: "lorem ipsum dolor sit amet consectetur adipiscing elit atque at anim ullamco in aute est libero dolore eiusmod aliquip nulla iusto quo libero reprehenderit temporibus illum dignissimos et est similique ut molestias tempore odio quidem eiusmod officia dolorum ex dolore quos laborum amet dolore irure qui est quod id adipiscing quidem commodo proident voluptas consequat est corrupti ullamco dolorum sed in velit do proident laborum laborum minim incididunt sunt consequatur similique dolorem placeat anim odio do magna animi reprehenderit est est blanditiis aute quibusdam et do occaecat id odio repellendus molestias soluta vero cillum fuga expedita magna dolor et odio eos et nulla dolor enim et quo voluptas molestias eum in laboris voluptate est mollit nam in eu non eos eum eu sunt nulla nostrud amet lorem et sunt pariatur sunt culpa nisi provident deserunt quod laborum quas similique sed lorem eligendi excepteur eiusmod velit odio qui harum exercitation deserunt.",
   email: "angjames2812@gmail.com",
   socials: [
     { platform: "github", label: "GitHub", href: "https://github.com/m4tcha17" },

@@ -14,6 +14,8 @@ export type ProjectMeta = {
   order: number;
   /** Free text, e.g. "2025" or "Jan–Mar 2025". Shown only on the detail page. */
   date?: string;
+  /** What the author did on the project, one bullet per item. Shown only on the detail page. */
+  contribution?: string[];
 };
 
 export type Project = ProjectMeta & {

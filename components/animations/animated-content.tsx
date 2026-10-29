@@ -30,6 +30,8 @@ export interface AnimatedContentProps extends Omit<HTMLAttributes<HTMLDivElement
   staggerFrom?: AnimatedContentStaggerFrom;
   trigger?: 'scroll' | 'mount';
   once?: boolean;
+  /** With `once={false}`: reset silently once the element is fully below the viewport, instead of reversing on scroll up. */
+  resetOffscreen?: boolean;
   scrub?: boolean | number;
   disappearAfter?: number;
   disappearDuration?: number;
@@ -73,6 +75,7 @@ const AnimatedContent = ({
   staggerFrom = 'start',
   trigger = 'scroll',
   once = true,
+  resetOffscreen = false,
   scrub = false,
   disappearAfter = 0,
   disappearDuration = 0.5,
@@ -205,13 +208,27 @@ const AnimatedContent = ({
         start,
         once,
         onEnter: () => tl.play(),
-        onLeaveBack: once
-          ? undefined
-          : () => {
-              if (mask) gsap.set(targets, { maskImage: mask, webkitMaskImage: mask });
-              tl.reverse();
-            }
+        onLeaveBack:
+          once || resetOffscreen
+            ? undefined
+            : () => {
+                if (mask) gsap.set(targets, { maskImage: mask, webkitMaskImage: mask });
+                tl.reverse();
+              }
       });
+
+      if (!once && resetOffscreen) {
+        // Rewinds only when the element's top drops below the viewport, so the reset is never visible.
+        ScrollTrigger.create({
+          trigger: el,
+          scroller,
+          start: 'top bottom',
+          onLeaveBack: () => {
+            if (mask) gsap.set(targets, { maskImage: mask, webkitMaskImage: mask });
+            tl.pause(0);
+          }
+        });
+      }
     }, el);
 
     return () => ctx.revert();
@@ -235,6 +252,7 @@ const AnimatedContent = ({
     staggerFrom,
     trigger,
     once,
+    resetOffscreen,
     scrub,
     disappearAfter,
     disappearDuration,
