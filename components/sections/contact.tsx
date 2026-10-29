@@ -18,7 +18,7 @@ export function Contact() {
   return (
     <section id="contact" className="mx-auto w-full max-w-5xl scroll-mt-16 px-4 py-16 sm:px-6">
       <AnimatedContent distance={40} once={false}>
-        <h2 className="cursor-target w-fit font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Vision worth creating?</h2>
+        <h2 className="cursor-target w-fit font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">Have a vision worth creating?</h2>
         <p className="cursor-target mt-4 w-fit max-w-2xl text-muted-foreground">
           Turn your vision into reality, built with precision and efficiency.
         </p>

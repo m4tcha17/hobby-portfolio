@@ -130,7 +130,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Always reserve the scrollbar's space so short pages (e.g. /projects) don't lose the scrollbar and shift centered content sideways. */
   html {
     @apply font-sans;
+    scrollbar-gutter: stable;
   }
 }
