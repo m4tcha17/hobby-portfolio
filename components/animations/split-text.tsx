@@ -399,6 +399,8 @@ const SplitText = ({
       el.addEventListener('click', onClick);
 
       return () => {
+        // Portfolio edit: refs survive a hidden <Activity> route, so clear this to replay the reveal when the page is shown again.
+        completedTextRef.current = null;
         cancelAnimationFrame(raf);
         queued?.kill();
         busy?.kill();
