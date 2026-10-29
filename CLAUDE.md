@@ -22,7 +22,10 @@
 - **Home `/`**: single scrolling page with sections Hero, Skills Marquee, Featured Projects, Contact.
 - **First screen**: Hero and Skills Marquee together fill the viewport below the header; Featured Projects starts below the fold.
 - **Skills Marquee** (home, between Hero and Featured Projects): thin strip of `site.skills` scrolling horizontally (React Bits `LogoLoop`), static under `prefers-reduced-motion`.
-- **`/about`**: profile photo (`public/profile.jpg`), name (the page's h1), About bio from `content/about.mdx`, and skills chips.
+- **`/about`**: bookish layout (layout only, site fonts unchanged), three sections separated by ornament dividers:
+  - Intro: name (the page's h1), role · location line, ornament divider, profile photo (`public/profile.jpg`) beside the About bio from `content/about.mdx` (drop cap), then an epigraph quote.
+  - Skills: `site.skillGroups` in three categories (Languages, Libraries & Frameworks, Backend & Infrastructure), chips per group.
+  - What I'm doing now: `site.now` list of label + text items.
 - **Featured Projects**: max 3 cards, selected by `featured: true` and sorted by `order`. Each card links to `/projects/[slug]`. A "More works" button links to `/projects`.
 - **`/projects`**: one page listing all projects, one project per row. Each row shows image, title, long description (MDX body, 4–5 sentences max), tech stack chips, and a GitHub button. Each row links to `/projects/[slug]`; the GitHub button links to the repo only.
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`.
@@ -46,7 +49,7 @@
   - `/projects` rows: long description (MDX body) only.
   - `/projects/[slug]`: both `summary` and long description. `date` is shown only here.
 - `lib/projects.ts` holds the `ProjectMeta` type, `getProjects()` (reads `content/projects/` server-side, sorted by `order`), `getFeaturedProjects()` (featured, first 3) and `getProject(slug)`.
-- `content/site.ts`: typed profile data (name, role, tagline, email, socials, skills).
+- `content/site.ts`: typed profile data (name, role, location, tagline, email, socials, skills for the home marquee, and for `/about`: quote, skillGroups, now).
 - `content/about.mdx`: About bio.
 - Project images live in `public/projects/<slug>.(png|webp)` and render with `next/image`.
 
@@ -56,13 +59,13 @@
 app/
   layout.tsx            # metadata, SiteHeader, SiteFooter
   page.tsx              # Hero, SkillsMarquee, FeaturedProjects, Contact
-  about/page.tsx        # About section
+  about/page.tsx        # About intro, AboutSkills, AboutNow
   projects/page.tsx     # all projects, one ProjectRow each
   projects/[slug]/page.tsx  # project detail page
 components/
   ui/                   # shadcn components
-  site/                 # header.tsx, footer.tsx, section-divider.tsx, home-link.tsx
-  sections/             # hero.tsx, hero-replay.tsx, hero-terminal.tsx, about.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
+  site/                 # header.tsx, footer.tsx, section-divider.tsx, ornament-divider.tsx, home-link.tsx
+  sections/             # hero.tsx, hero-replay.tsx, hero-terminal.tsx, about.tsx, about-skills.tsx, about-now.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
   projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
   animations/           # React Bits components (logo-loop.tsx)
 content/                # site.ts, about.mdx, projects/*.mdx

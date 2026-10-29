@@ -5,7 +5,7 @@ import { HomeLink } from "@/components/site/home-link";
 
 const navItems = [
   { label: "About", href: "/about" },
-  { label: "Projects", href: "/#projects" },
+  { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/#contact" },
 ];
 

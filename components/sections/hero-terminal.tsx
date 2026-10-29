@@ -60,6 +60,7 @@ export function HeroTerminal() {
               as="span"
               text="Software developer with Linux experience."
               loop={false}
+              initialDelay={500}
               cursorStyle="block"
               mistakes={0.4}
               typingSpeed={40}
