@@ -40,7 +40,7 @@ export function Hero() {
             splitType="chars"
             delay={30}
             textAlign="left"
-            className="cursor-target mt-3 max-w-lg font-heading text-6xl font-semibold tracking-tight text-foreground sm:text-6xl"
+            className="cursor-target mt-3 max-w-lg font-heading text-6xl font-semibold tracking-tight text-foreground sm:text-4x1"
           >
             <Highlight text={site.tagline} />
           </SplitText>
