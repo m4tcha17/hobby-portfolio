@@ -14,6 +14,7 @@
 - React 19
 - Tailwind CSS v4 + shadcn (`base-mira` style, Base UI primitives); theme tokens live in `app/globals.css`
 - Phosphor icons (`@phosphor-icons/react`)
+- `next-themes` for light/dark mode
 - MDX via `@next/mdx` for content
 - pnpm
 
@@ -32,6 +33,7 @@
 - **`/projects/[slug]`**: one detail page per project showing image, title, summary, date (if set), tech stack, long description, a GitHub button, and a back link to `/projects`. Below the image, the long description sits beside a narrower side column (2:1) with the tech stack, "My contribution" (if set) and the GitHub button.
 - **Contact** (home, `#contact`): "Get in touch" heading, short text, and one button (destination TBD; temporary mailto).
 - **Footer**: copyright, mailto link, and social links. This is the only place email and socials appear.
+- **Theme**: light/dark toggle at the top-right of the header. First visit follows the system setting; the visitor's choice persists across reloads (`next-themes`, `.dark` class on `<html>`). Switching plays a circle reveal from the toggle (View Transitions API), instant under `prefers-reduced-motion` or without browser support.
 - **Out of scope**: blog, contact form, CMS, backend, metadata fields beyond those listed under Content.
 - Fully static site.
 
@@ -65,7 +67,7 @@ app/
   projects/[slug]/page.tsx  # project detail page
 components/
   ui/                   # shadcn components
-  site/                 # header.tsx, nav-link.tsx, footer.tsx, section-divider.tsx, ornament-divider.tsx, home-link.tsx
+  site/                 # header.tsx, nav-link.tsx, footer.tsx, section-divider.tsx, ornament-divider.tsx, home-link.tsx, theme-provider.tsx, theme-toggle.tsx
   sections/             # hero.tsx, hero-replay.tsx, hero-terminal.tsx, about.tsx, about-thought.tsx, about-skills.tsx, about-now.tsx, skills-marquee.tsx, featured-projects.tsx, contact.tsx
   projects/             # project-card.tsx, project-row.tsx, tech-stack.tsx
   animations/           # React Bits components (logo-loop.tsx, lattice-loader.tsx)

@@ -7,6 +7,8 @@ export interface TargetCursorProps {
   targetSelector?: string;
   cursorColor?: string;
   cursorColorOnTarget?: string;
+  /** Corner bracket color; defaults to the cursor color, so corners and dot can differ. */
+  cornerColor?: string;
   spinDuration?: number;
   hoverDuration?: number;
   parallaxOn?: boolean;
@@ -44,6 +46,7 @@ const TargetCursor = ({
   targetSelector = '.cursor-target',
   cursorColor = '#ffffff',
   cursorColorOnTarget,
+  cornerColor,
   spinDuration = 2,
   hoverDuration = 0.2,
   parallaxOn = true,
@@ -384,7 +387,7 @@ const TargetCursor = ({
     <div
       ref={rootRef}
       className="pointer-events-none fixed inset-0 z-2147483647"
-      style={{ mixBlendMode: blendMode, opacity: 0 }}
+      style={{ mixBlendMode: blendMode, opacity: 0, ...(cornerColor && { '--target-cursor-corner-color': cornerColor }) } as CSSProperties}
       aria-hidden="true"
     >
       {CORNER_ANGLES.map((angle, i) => (
@@ -393,7 +396,7 @@ const TargetCursor = ({
           ref={element => {
             cornerRefs.current[i] = element;
           }}
-          className="absolute top-0 left-0 box-border origin-top-left border-solid border-color:var(--target-cursor-color,#ffffff) will-change-transform"
+          className="absolute top-0 left-0 box-border origin-top-left border-solid [border-color:var(--target-cursor-corner-color,var(--target-cursor-color,#ffffff))] will-change-transform"
         />
       ))}
       <span
@@ -402,7 +405,7 @@ const TargetCursor = ({
       />
       <span
         ref={labelRef}
-        className="absolute top-0 left-0 text-[12px] leading-none font-medium whitespace-nowrap opacity-0 color:var(--target-cursor-color,#ffffff) will-change-[transform,opacity]"
+        className="absolute top-0 left-0 text-[12px] leading-none font-medium whitespace-nowrap opacity-0 [color:var(--target-cursor-color,#ffffff)] will-change-[transform,opacity]"
       />
     </div>,
     host

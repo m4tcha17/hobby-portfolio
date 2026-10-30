@@ -79,6 +79,10 @@
   --scrim: oklch(0.141 0.005 285.823);
   --scrim-foreground: oklch(0.985 0 0);
   --primary-on-scrim: oklch(0.86 0.09 152.41);
+  /* TargetCursor color; exclusion blend turns it dark on light content. */
+  --cursor: oklch(0.9546 0.0086 67.72);
+  /* TargetCursor corner brackets: mid grey, so after the exclusion blend they read as grey, softer than the dot. */
+  --cursor-corners: oklch(0.7 0.006 286);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
   --sidebar-primary: oklch(0.5049 0.0606 152.41);
@@ -96,31 +100,47 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.473 0.137 46.201);
-  --primary-foreground: oklch(0.987 0.022 95.277);
+  --primary: oklch(0.7366 0.0672 19.72);
+  /* Primary is a light rose, so text on it is a deep rose instead of white. */
+  --primary-foreground: oklch(0.22 0.03 19.72);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
   --accent: oklch(0.274 0.006 286.033);
   --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  --destructive: oklch(0.6046 0.1131 14.13);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --ring: oklch(0.7366 0.0672 19.72);
   --chart-1: oklch(0.871 0.006 286.286);
   --chart-2: oklch(0.552 0.016 285.938);
   --chart-3: oklch(0.442 0.017 285.786);
   --chart-4: oklch(0.37 0.013 285.805);
   --chart-5: oklch(0.274 0.006 286.033);
+  /* Terminal and card gradient: a step above the background so the hero terminal doesn't merge into the page. */
+  --scrim: oklch(0.21 0.006 285.885);
+  --scrim-foreground: oklch(0.985 0 0);
+  /* Featured card title hover and terminal prompt: a lighter rose that reads on the scrim. */
+  --primary-on-scrim: oklch(0.86 0.06 19.72);
+  --cursor: oklch(0.985 0 0);
+  --cursor-corners: oklch(0.75 0.006 286);
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.769 0.188 70.08);
-  --sidebar-primary-foreground: oklch(0.279 0.077 45.635);
+  --sidebar-primary: oklch(0.7366 0.0672 19.72);
+  --sidebar-primary-foreground: oklch(0.22 0.03 19.72);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  --sidebar-ring: oklch(0.7366 0.0672 19.72);
+}
+
+/* Theme toggle circle reveal (components/site/theme-toggle.tsx): the new snapshot is clipped by a JS animation,
+   so drop the default crossfade. Scoped by `.theme-reveal` so other view transitions keep their defaults. */
+.theme-reveal::view-transition-old(root),
+.theme-reveal::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 @layer base {

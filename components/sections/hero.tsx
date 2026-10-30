@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/ssr";
 
 import { site } from "@/content/site";
@@ -53,21 +52,23 @@ export function Hero() {
           </AnimatedContent>
           <AnimatedContent distance={24} trigger="mount" delay={0.45}>
             <div className="mt-10 flex flex-wrap gap-3">
+              {/* Plain anchors for both buttons: the hero is only on "/", and a native fragment jump scrolls again even when
+                  the URL already ends in the same hash (next/link skips same-URL navigations). */}
               {/* padding 0: the pull only engages while the cursor is on the button itself. */}
               <Magnet padding={0} magnetStrength={2} maxOffset={5}>
-                <Link href="/#projects" className={buttonVariants({ size: "lg" })}>
+                <a href="#projects" className={buttonVariants({ size: "lg" })}>
                   View projects
                   <ArrowRightIcon data-icon="inline-end" aria-hidden />
-                </Link>
+                </a>
               </Magnet>
-              <Link href="/#contact" className={buttonVariants({ size: "lg", variant: "quiet" })}>
+              <a href="#contact" className={buttonVariants({ size: "lg", variant: "quiet" })}>
                 <EnvelopeSimpleIcon
                   data-icon="inline-start"
                   aria-hidden
                   className="transition-transform duration-300 group-hover/button:-translate-y-1 group-focus-visible/button:-translate-y-1 motion-reduce:transition-none motion-reduce:translate-y-0!"
                 />
                 Contact me
-              </Link>
+              </a>
             </div>
           </AnimatedContent>
           <AnimatedContent distance={24} trigger="mount" delay={0.6} className="mt-12 hidden lg:block">
