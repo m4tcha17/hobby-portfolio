@@ -7,6 +7,7 @@ import { stripHighlights } from "@/lib/highlight";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { ParticlesBackground } from "@/components/site/particles-background";
 import TargetCursor from "@/components/animations/target-cursor";
 
 const publicSans = Public_Sans({subsets:['latin'],variable:'--font-sans'});
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider>
+          <ParticlesBackground />
           <SiteHeader />
           <main className="flex flex-1 flex-col">{children}</main>
           <SiteFooter />

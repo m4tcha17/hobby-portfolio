@@ -68,7 +68,7 @@ export const site: SiteConfig = {
     { title: "Backend & Infrastructure", items: ["Placeholder"] },
   ],
   now: [
-    { label: "Reading", text: "Placeholder book title" },
+    { label: "Education", text: "completing my undergraduate degree in Computer Science in University of San Carlos" },
     { label: "Building", text: "Placeholder project" },
     { label: "Learning", text: "Placeholder topic" },
   ],
